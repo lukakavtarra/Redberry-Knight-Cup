@@ -7,6 +7,18 @@
     <title>Redberry Knight Cup</title>
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
+    <!-- fa icons -->
+    <script
+      src="https://kit.fontawesome.com/6ba073b965.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- fonst -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <main>
@@ -39,11 +51,43 @@
           <p class="personal-information">Personal Information</p>
           <p class="chess-experience ">Chess experience </p>
         </div>
-        <div class="personal-info-form">
+        <div class="personal-info-page">
           <h2>Personal information</h2>
           <p id="basic-info-text">This Is Basic Information Fields</p>
         </div>
+       <!-- form -->
+        <form>
+          <div class="input-placeholder">
+              <input type="text" placeholder=" ss" required/>
+              <div class="placeholder">
+                  Name <span>*</span>
+              </div>
+              <i class="fa-regular fa-circle-check display-none"></i>
+
+          </div>
+          <div class="input-placeholder">
+            <input type="email" required>
+            <div class="placeholder">
+                Email address<span>*</span>
+            </div>
+        </div>
+        <div class="input-placeholder">
+          <input type="text" required>
+          <div class="placeholder">
+              Phone number <span>*</span>
+          </div>
       </div>
+      <div class="input-placeholder">
+        <input type="text" required>
+        <div class="placeholder">
+            Date of birth <span>*</span>
+        </div>
+    </div>  
+    <p onClick="mySubmit()">submit</p>
+      </form>
+      
+      </div>
+      <script src="./script.js"></script>
     </main>
   </body>
 </html>

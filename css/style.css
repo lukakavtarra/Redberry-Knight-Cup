@@ -17,6 +17,9 @@ main {
   width: 100%;
   height: 100%;
 }
+.display-none {
+  display: none !important;
+}
 .column {
   float: left;
   width: 50%;
@@ -130,11 +133,11 @@ main:after {
 
   /* personal information form */
 
-  .personal-info-form {
+  .personal-info-page {
     margin-left: 60px;
     margin-top: 112px;
   }
-  .personal-info-form h2 {
+  .personal-info-page h2 {
     font-size: 32px;
     font-family: var(--open-sans);
     font-weight: 600;
@@ -144,3 +147,52 @@ main:after {
     font-weight: 600;
     color: #95939A;
   }
+/* input ::after{
+  content: "*";
+  background-color: black;
+  color: red;
+} */
+
+  /* input styling */
+
+  .input-placeholder {
+    position: relative;
+  }
+  .input-placeholder input {
+    padding: 10px;
+    font-size: 25px;
+  }
+  /* .input-placeholder input:valid + .placeholder {
+    display: none;
+  }
+input:focus + .placeholder {
+  display: none;
+} */
+/* input[value=""]{
+  background-color: red;
+} */
+.placeholder:not(:placeholder-shown) {
+ background-color: green;
+  
+}
+  .placeholder {
+      position: absolute;
+      pointer-events: none;
+      top: 0;
+      bottom: 0;
+      height: 25px;
+      font-size: 25px;
+      margin: 53px 0 0 72px;
+      color: #ccc;
+  }
+  
+  .placeholder span {
+    color: red;
+  }
+ input {
+  border:none;
+  border-bottom: solid;
+  width: 793px;
+  margin: 42px 190px 0 64px;
+}
+
