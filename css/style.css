@@ -162,19 +162,10 @@ main:after {
     padding: 10px;
     font-size: 25px;
   }
-  /* .input-placeholder input:valid + .placeholder {
+   .input-placeholder input:focus + .placeholder {
     display: none;
   }
-input:focus + .placeholder {
-  display: none;
-} */
-/* input[value=""]{
-  background-color: red;
-} */
-.placeholder:not(:placeholder-shown) {
- background-color: green;
   
-}
   .placeholder {
       position: absolute;
       pointer-events: none;
@@ -195,4 +186,31 @@ input:focus + .placeholder {
   width: 793px;
   margin: 42px 190px 0 64px;
 }
-
+/* input:invalid {
+  background-color: #FFEFEF;
+} */
+.page-next-back {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 174px 0 72px;
+}
+.page-next-back a {
+  border: solid black;
+  text-decoration: none;
+  padding: 7px 10px;
+  border-radius: 7px;
+  font-size: 20px;
+  color: black;
+  font-family: var(--open-sans);
+  font-weight: 400;
+}
+.page-next-back a i {  
+  border:0.1px solid white;
+  border-radius:50% ;
+  color: white;
+  background-color: black;
+}
+.next-button {
+  background-color: black ;
+  color: white !important;
+}

@@ -1,16 +1,19 @@
 const checked = document.querySelectorAll('.input-placeholder input');
 const inputDiv = document.querySelectorAll(".input-placeholder");
 const goodValidation = document.querySelectorAll("i");
-localItems = ['name','email','phone','dateOfBirth']
+const geoPhoneRegex =  /^(\+?995)?(79\d{7}|5\d{8})$/;
+const redberryMail = /@redberry.ge$/;
+localItems = ['name','email','phone','dateOfBirth'];
+
 checked.forEach((item,index)=> {
   item.value = localStorage.getItem(localItems[index])
 })
 const postApi =  async () => {
   const data = {
-  "name": "Beth Harmon",
-  "email": "beth@redberry.ge",
-  "phone": "598125819",
-  "date_of_birth": "10/20/1997",
+  "name": localStorage.name,
+  "email": localStorage.email,
+  "phone": localStorage.phone,
+  "date_of_birth": localStorage.dateOfBirth,
   "experience_level": "beginner",
   "already_participated": true,
   "character_id": 2,  
@@ -30,17 +33,40 @@ const mySubmit = () => {
 
 
 
+
+  postApi();
+}
+checked.forEach(item => {
+  if(item.value !== "") {
+    item.parentNode.children[1].style.display = "none";
+  }
+})
+const formFunc = (elem) => {
   checked.forEach((item,index) => {
     if(item.value !== ""){
-      localStorage.setItem(localItems[index],item.value)
-      // const goodValidation = document.createElement('i');
-      // goodValidation.className = "fa-regular fa-circle-check";
-      // inputDiv[index].append(goodValidation);
+      localStorage.setItem(localItems[index],item.value);
 
     }else {
-      localStorage.removeItem(localItems[index])
-      console.log("test")
+      localStorage.removeItem(localItems[index]);
     }
   })
-  postApi();
+const placeHolder = elem.parentNode.children[1];
+// match redberry mail regex
+  if(elem.type == "email" && elem.value.match(redberryMail)){
+    elem.style.backgroundColor = "white";
+  } else if (elem.type == "email") {
+    elem.style.backgroundColor = "#FFEFEF";
+  }
+  //placeholder
+  if(elem.value == ""){
+    placeHolder.style.display = "block";
+  }else {
+    placeHolder.style.display = "none";
+  }
+}
+// hide placeholder on date type input
+const makeDateFormat = (elem) => {
+  elem.type='date'
+  console.log(elem.parentNode.children[0])
+  elem.parentNode.children[1].style.display = "none"
 }

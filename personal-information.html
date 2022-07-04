@@ -58,7 +58,7 @@
        <!-- form -->
         <form>
           <div class="input-placeholder">
-              <input type="text" placeholder=" ss" required/>
+              <input type="text" onkeyup="formFunc(this)" placeholder=" " required>
               <div class="placeholder">
                   Name <span>*</span>
               </div>
@@ -66,24 +66,29 @@
 
           </div>
           <div class="input-placeholder">
-            <input type="email" required>
+            <input type="email" onkeyup="formFunc(this)" required>
             <div class="placeholder">
                 Email address<span>*</span>
             </div>
         </div>
         <div class="input-placeholder">
-          <input type="text" required>
+          <input type="tel" onkeyup="formFunc(this)" required>
           <div class="placeholder">
               Phone number <span>*</span>
           </div>
       </div>
       <div class="input-placeholder">
-        <input type="text" required>
+        <input type="text" name="date"
+        onfocus="makeDateFormat(this)" onkeyup="formFunc(this)" required>
         <div class="placeholder">
             Date of birth <span>*</span>
         </div>
     </div>  
     <p onClick="mySubmit()">submit</p>
+    <div class="page-next-back">
+    <a href="./index.html">back</a>
+    <a class="next-button" href="#">Next <i class="fa-regular fa-circle-right"></i></a>
+  </div>
       </form>
       
       </div>
