@@ -1,33 +1,83 @@
-let grandmasters;
-const divMaster = document.getElementById("masters");
-function getGrandmasters() {
-  const grandmastersDiv = document.createElement("select");
+const checked = document.querySelectorAll(".input-placeholder input");
+const inputDiv = document.querySelectorAll(".input-placeholder");
+const goodValidation = document.querySelectorAll("i");
+const activePage = document.querySelector(".active");
+// const geoPhoneRegex = /^(\+?995)?(79\d{7}|5\d{8})$/;
+// const redberryMail = /@redberry.ge$/;
+localItems = [
+  "name",
+  "email",
+  "phone",
+  "dateOfBirth",
+  "experience",
+  "alreadyParticipated",
+];
+checked.forEach((item, index) => {
+  item.value = localStorage.getItem(localItems[index]);
+});
 
-  grandmasters.forEach((item) => {
-    const grandmastersList = document.createElement("option");
-    const testPictures = document.createElement("img");
-    testPictures.src = item.image;
-    divMaster.append(testPictures);
-    grandmastersList.text = item.name;
-    grandmastersDiv.options = "meoretesti";
-    divMaster.append(grandmastersDiv);
-    grandmastersDiv.appendChild(grandmastersList);
-
-    console.log(item.name);
-  });
-}
-window.onload = async () => {
-  const response = await fetch(
-    "https://chess-tournament-api.devtest.ge/api/grandmasters",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-        "Access-Control-Allow-Origin": "*",
-      },
+checked.forEach((item) => {
+  if (item.value !== "") {
+    item.parentNode.children[1].style.display = "none";
+  }
+});
+const formFunc = (elem) => {
+  checked.forEach((item, index) => {
+    if (item.value !== "") {
+      activePage.style.backgroundColor = "#E9FAF1";
+      localStorage.setItem(localItems[index], item.value);
+    } else {
+      activePage.style.backgroundColor = "white";
+      localStorage.removeItem(localItems[index]);
     }
-  );
-  grandmasters = await response.json();
-  console.log(grandmasters);
-  getGrandmasters();
+  });
+  const placeHolder = elem.parentNode.children[1];
+  //placeholder
+  if (elem.value == "") {
+    placeHolder.style.display = "block";
+  } else {
+    placeHolder.style.display = "none";
+  }
+  if (elem.checkValidity() == true) {
+    elem.parentNode.children[2].style.display = "block";
+  } else {
+    elem.parentNode.children[2].style.display = "none";
+  }
 };
+
+// hide placeholder on date type input
+const makeDateFormat = (elem) => {
+  elem.type = "date";
+  elem.parentNode.children[1].style.display = "none";
+};
+//styling wrong validated forms
+const stylingWrongValidation = () => {
+  checked.forEach((item) => {
+    item.style.backgroundColor = "white";
+    item.style.color = "black";
+  });
+
+  for (let i = 0; i < checked.length; i++)
+    if (checked[i].checkValidity() == true) {
+      checked[i].style.backgroundColor = "white";
+      checked[i].style.color = "black";
+    } else {
+      checked[i].style.backgroundColor = "#FFEFEF";
+      checked[i].style.color = "#DC3545";
+      break;
+    }
+};
+// Validate Form
+const validateForm = (elem) => {
+  const form = document.getElementById("myForm");
+  const checkForm = form.checkValidity();
+  const url = "./experience.html";
+
+  if (checkForm == true) {
+    elem.children[0].href = url;
+  } else {
+    stylingWrongValidation();
+  }
+};
+
+/////////

@@ -11,6 +11,7 @@ body {
   margin: 0;
   width: 1920px;
   height: 1080px;
+  overflow: hidden;
 }
 main {
   /* display: flex;  */
@@ -37,7 +38,7 @@ main:after {
 }
 .chess-pic {
   width: 100%;
-  height:1000px;
+  height: 1000px;
   object-fit: cover;
 }
 #landing-header {
@@ -81,136 +82,284 @@ main:after {
   font-family: var(--open-sans);
 }
 
-
 /* second page */
-  #personal-info-header p{
-    border: solid;
-    padding: 30px 48px;
-    font-family: var(--open-sans);
-
-  }
-  .pages {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 60px 107px 0;
+.personal-info-header p {
+  border-bottom: 0.1px solid #b9b4c34d;
+  padding: 29px 48px;
+  font-family: var(--open-sans);
+}
+.pages {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 60px 107px 0;
 }
 
-
-  .pages span {
-    border: solid #E5E6E8;
-    padding: 9px 15px;
-    border-radius: 8px;
-    font-family: var(--open-sans);
-    font-weight: 700;
-  }
-  .pages hr {
-    width: 174px !important; 
-    border: none;
-    border-bottom: solid #B9B4C34D;
-    /* height:  ; */
-     margin: 0 4px;
-  }
-  .pages-info {
-    display: flex;
-    margin-top: 4px;
+.pages span {
+  border: solid #e5e6e8;
+  padding: 9px 15px;
+  border-radius: 8px;
+  font-family: var(--open-sans);
+  font-weight: 700;
+}
+.pages hr {
+  width: 174px !important;
+  border: none;
+  border-bottom: solid #b9b4c34d;
+  /* height:  ; */
+  margin: 0 4px;
+}
+.pages-info {
+  display: flex;
+  margin-top: 4px;
 }
 /* unactive page */
 
 .unactive {
-  background-color: #E5E6E8;
-  color: #95939A;
+  background-color: #e5e6e8;
+  color: #95939a;
 }
 
-    .pages-info p {
-      margin-left: 62px;
-      font-family: var(--open-sans);
-      font-weight: 400;
-  }
-  .pages-info .chess-experience {
-    margin-left:77px;
-  }
+.pages-info p {
+  margin-left: 62px;
+  font-family: var(--open-sans);
+  font-weight: 400;
+}
+.pages-info .chess-experience {
+  margin-left: 77px;
+}
 
-  /* personal information form */
+/* personal information form */
 
-  .personal-info-page {
-    margin-left: 60px;
-    margin-top: 112px;
-  }
-  .personal-info-page h2 {
-    font-size: 32px;
-    font-family: var(--open-sans);
-    font-weight: 600;
-  }
-  #basic-info-text {
-    font-family:var(--open-sans);
-    font-weight: 600;
-    color: #95939A;
-  }
+.personal-info-page {
+  margin-left: 60px;
+  margin-top: 112px;
+}
+.personal-info-page h2 {
+  font-size: 32px;
+  font-family: var(--open-sans);
+  font-weight: 600;
+}
+#basic-info-text {
+  font-family: var(--open-sans);
+  font-weight: 600;
+  color: #95939a;
+}
 /* input ::after{
   content: "*";
   background-color: black;
   color: red;
 } */
 
-  /* input styling */
+/* input styling */
 
-  .input-placeholder {
-    position: relative;
-  }
-  .input-placeholder input {
-    padding: 10px;
-    font-size: 25px;
-  }
-   .input-placeholder input:focus + .placeholder {
-    display: none;
-  }
-  
-  .placeholder {
-      position: absolute;
-      pointer-events: none;
-      top: 0;
-      bottom: 0;
-      height: 25px;
-      font-size: 25px;
-      margin: 53px 0 0 72px;
-      color: #ccc;
-  }
-  
-  .placeholder span {
-    color: red;
-  }
- input {
-  border:none;
-  border-bottom: solid;
-  width: 793px;
-  margin: 42px 190px 0 64px;
+.input-placeholder {
+  position: relative;
 }
-/* input:invalid {
-  background-color: #FFEFEF;
-} */
-.page-next-back {
-    display: flex;
-    justify-content: space-between;
-    margin: 40px 174px 0 72px;
-}
-.page-next-back a {
-  border: solid black;
-  text-decoration: none;
-  padding: 7px 10px;
-  border-radius: 7px;
+.input-placeholder input {
+  padding: 10px;
   font-size: 20px;
-  color: black;
   font-family: var(--open-sans);
   font-weight: 400;
 }
-.page-next-back a i {  
-  border:0.1px solid white;
-  border-radius:50% ;
-  color: white;
-  background-color: black;
+.input-placeholder input:focus + .placeholder {
+  display: none;
 }
-.next-button {
-  background-color: black ;
+
+input:focus {
+  cursor: text;
+}
+.placeholder {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  bottom: 0;
+  height: 25px;
+  font-size: 25px;
+  font-weight: 400;
+  margin: 53px 0 0 72px;
+  color: #ccc;
+  font-family: var(--open-sans);
+}
+
+.placeholder span {
+  color: red;
+}
+input {
+  border: none;
+  border-bottom: 0.1px solid rgba(0, 0, 0, 0.188);
+  width: 793px;
+  margin: 42px 190px 0 64px;
+  cursor: pointer;
+}
+/* Hide Calendar Icon In Chrome */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+input:hover + .placeholder {
+  opacity: 0.8;
+}
+/* Back and Next buttons */
+.page-next-back {
+  display: flex;
+  justify-content: space-between;
+  margin: 101px 174px 0 72px;
+}
+
+.back {
+  color: black;
+}
+.back,
+#validateButton a {
+  border: 0.1px solid black !important;
+  text-decoration: none;
+  padding: 6px 15px;
+  border-radius: 7px;
+  font-size: 20px;
+  font-family: var(--open-sans);
+  font-weight: 400;
+}
+
+#validateButton {
+  border: none;
+  background-color: black;
   color: white !important;
+  padding: 0;
+  border-radius: 7px;
+}
+#validateButton a i {
+  padding: 0;
+}
+
+/* Right Validaiton */
+i.fa-solid.fa-circle-check {
+  position: absolute;
+  left: 52rem;
+  top: 3.5rem;
+  display: block;
+  color: green;
+  font-size: 20px;
+  display: none;
+}
+
+/* experience page */
+.experience-header {
+  position: absolute;
+  top: 219px;
+  left: 117px;
+  font-style: italic;
+  font-size: 33px;
+  font-family: var(--nunito);
+  font-weight: 800;
+  line-height: 64px;
+}
+.header-autor-name {
+  position: absolute;
+  top: 377px;
+  left: 499px;
+  font-style: italic;
+  font-size: 29px;
+  font-family: var(--nunito);
+  font-weight: 500;
+  color: #093f68;
+}
+/* options */
+.experience {
+  padding: 8px 10px 8px 16px;
+  font-size: 16px;
+  font-family: var(--open-sans);
+  margin: 95px 5px 0 48px;
+  background-color: white;
+  border: none;
+  border-bottom: 0.1px solid gray;
+  border-radius: 0;
+  width: 355px;
+}
+select {
+  /* styling */
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+
+  /* reset */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+
+/* arrows */
+
+select.experience {
+  background-image: linear-gradient(45deg, transparent 50%, black 50%),
+    linear-gradient(135deg, black 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+}
+
+select.experience:active {
+  background-image: linear-gradient(45deg, black 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, black 50%);
+  background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em, 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+  outline: 0;
+}
+
+#myFormChessMasters {
+  display: flex;
+}
+.participated {
+  display: flex;
+  justify-content: center;
+  width: 213px;
+  margin: 25px;
+}
+.participated label {
+  margin-right: 25px;
+  margin-left: 10px;
+}
+.participated input {
+  margin: 0;
+  padding: 0;
+  width: 20px;
+}
+#chempionshit-participate {
+  font-size: 20px;
+  font-family: var(--open-sans);
+  font-weight: 400;
+  margin: 57px 50px 37px 50px;
+}
+/* grandmasters character */
+#characters {
+  position: absolute;
+  right: 109px;
+  background-color: white;
+}
+.chessGrands {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  font-family: var(--open-sans);
+  font-weight: 300;
+  width: 400px;
+  margin: 7px;
+  padding: 13px;
+}
+.show {
+  display: flex;
+}
+.chessGrands:hover {
+  background-color: rgba(34, 34, 181, 0.871);
+}
+img.grandmasters-img {
+  width: 100px;
+  height: 72px;
+  object-fit: cover;
 }

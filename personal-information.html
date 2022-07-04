@@ -38,61 +38,83 @@
       </div>
       <!-- RIGHT -->
       <div class="personal-info column">
-        <div id="personal-info-header">
+        <div class="personal-info-header">
           <p>Start Creating Your Account</p>
         </div>
         <div class="pages">
-          <span>1 
-          </span>
-          <hr>
+          <span class="active">1 </span>
+          <hr />
           <span class="unactive">2</span>
         </div>
-        <div class=" pages-info">
+        <div class="pages-info">
           <p class="personal-information">Personal Information</p>
-          <p class="chess-experience ">Chess experience </p>
+          <p class="chess-experience">Chess experience</p>
         </div>
         <div class="personal-info-page">
           <h2>Personal information</h2>
           <p id="basic-info-text">This Is Basic Information Fields</p>
         </div>
-       <!-- form -->
-        <form>
+        <!-- form -->
+        <form name="myForm" id="myForm">
           <div class="input-placeholder">
-              <input type="text" onkeyup="formFunc(this)" placeholder=" " required>
-              <div class="placeholder">
-                  Name <span>*</span>
-              </div>
-              <i class="fa-regular fa-circle-check display-none"></i>
-
+            <input
+              title="name"
+              minlength="2"
+              type="text"
+              onkeyup="formFunc(this)"
+              required
+            />
+            <div class="placeholder">Name <span>*</span></div>
+            <i class="fa-solid fa-circle-check"></i>
           </div>
           <div class="input-placeholder">
-            <input type="email" onkeyup="formFunc(this)" required>
-            <div class="placeholder">
-                Email address<span>*</span>
-            </div>
-        </div>
-        <div class="input-placeholder">
-          <input type="tel" onkeyup="formFunc(this)" required>
-          <div class="placeholder">
-              Phone number <span>*</span>
+            <input
+              title="email"
+              oninvalid="this.setCustomValidity('Please enter valid email address')"
+              oninput="this.setCustomValidity('')"
+              pattern=".+@redberry\.ge"
+              type="email"
+              onkeyup="formFunc(this)"
+              required
+            />
+            <div class="placeholder">Email address<span>*</span></div>
+            <i class="fa-solid fa-circle-check"></i>
           </div>
+          <div class="input-placeholder">
+            <input
+              title="tel"
+              oninvalid="this.setCustomValidity('Please enter valid phone number')"
+              oninput="this.setCustomValidity('')"
+              pattern="[5]{1}[0-9]{8}"
+              type="tel"
+              onkeyup="formFunc(this)"
+              required
+            />
+            <div class="placeholder">Phone number <span>*</span></div>
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div class="input-placeholder">
+            <input
+              placeholder=" "
+              title="date"
+              type="text"
+              name="date"
+              onfocus="makeDateFormat(this)"
+              onkeyup="formFunc(this)"
+              required
+            />
+            <div class="placeholder">Date of birth <span>*</span></div>
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div class="page-next-back">
+            <a class="back" href="./index.html">back</a>
+            <button id="validateButton" onclick="validateForm(this)">
+              <a>Next <i class="fa-regular fa-circle-right"></i></a>
+            </button>
+          </div>
+        </form>
       </div>
-      <div class="input-placeholder">
-        <input type="text" name="date"
-        onfocus="makeDateFormat(this)" onkeyup="formFunc(this)" required>
-        <div class="placeholder">
-            Date of birth <span>*</span>
-        </div>
-    </div>  
-    <p onClick="mySubmit()">submit</p>
-    <div class="page-next-back">
-    <a href="./index.html">back</a>
-    <a class="next-button" href="#">Next <i class="fa-regular fa-circle-right"></i></a>
-  </div>
-      </form>
-      
-      </div>
-      <script src="./script.js"></script>
+      <script src="./js/script.js" type="text/javascript"></script>
     </main>
   </body>
 </html>

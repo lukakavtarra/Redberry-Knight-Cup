@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redberry Knight Cup</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- fa icons -->
+    <script
+      src="https://kit.fontawesome.com/6ba073b965.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- fonst -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <!-- LEFT -->
+      <div class="chess-picture column">
+        <header id="purpleline">
+          <p>
+            <img src="./images/landing-page/Vector.png" alt="Knight" />Redberry
+            Knight Cup
+          </p>
+        </header>
+        <div id="image">
+          <img
+            class="chess-pic"
+            src="./images/experience/unsplash_27LH_0jXKYI.jpg"
+            alt="chessgame"
+          />
+          <h3 class="experience-header">
+            “Many have become chess masters;<br />
+            no one has become the master of chess.”
+          </h3>
+          <h4 class="header-autor-name">- Siegbert Tarrasch</h4>
+        </div>
+      </div>
+      <!-- RIGHT -->
+      <!-- RIGHT -->
+      <div class="personal-info column">
+        <div class="personal-info-header">
+          <p>Start Creating Your Account</p>
+        </div>
+        <div class="pages">
+          <span class="active">1 </span>
+          <hr />
+          <span class="unactive">2</span>
+        </div>
+        <div class="pages-info">
+          <p class="personal-information">Personal Information</p>
+          <p class="chess-experience">Chess experience</p>
+        </div>
+        <div class="personal-info-page">
+          <h2>Chess experience</h2>
+          <p id="basic-info-text">This Is Basic Information Fields</p>
+        </div>
+        <!-- form -->
+        <form name="myForm">
+          <div id="myFormChessMasters">
+            <div class="">
+              <select
+                title="experience"
+                onclick="formFuncSelect(this)"
+                required
+                name="experience"
+                class="experience"
+                id="levelOfExperience"
+              >
+                <option value="zero" selected disabled selected>
+                  level of knowledge
+                </option>
+                <option
+                  data-class="avatar"
+                  data-style="background-image: url('https://chess-tournament-api.devtest.ge/images/nona.jpg');"
+                  value="beginner"
+                >
+                  <h3>Beginner</h3>
+                </option>
+                <option value="normal">Intermediate</option>
+                <option value="professional">Professional</option>
+              </select>
+            </div>
+            <div class="">
+              <div onclick="showGrands()" class="experience" id="grandmaster">
+                Choose your character <span style="color: red">*</span>
+              </div>
+              <div id="characters"></div>
+            </div>
+          </div>
+          <p id="chempionshit-participate">
+            Have you participated in the Redberry Championship?
+            <span style="color: red">*</span>
+          </p>
+
+          <div id="alreadyParticipate" class="participated">
+            <input
+              title="yes"
+              onclick="test()"
+              type="radio"
+              id="yes"
+              name="partipicipated"
+              value="true"
+            />
+            <label for="html">Yes</label>
+            <input
+              title="no"
+              onclick="test()"
+              type="radio"
+              id="no"
+              name="partipicipated"
+              value="false"
+            />
+            <label for="css">No</label>
+          </div>
+        </form>
+      </div>
+
+      <button onClick="mySubmit()">submit</button>
+    </main>
+    <script src="./js/getApi.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
