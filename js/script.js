@@ -2,6 +2,9 @@ const checked = document.querySelectorAll(".input-placeholder input");
 const inputDiv = document.querySelectorAll(".input-placeholder");
 const goodValidation = document.querySelectorAll("i");
 const activePage = document.querySelector(".active");
+const form = document.getElementById("myForm");
+const icon = document.querySelectorAll(".fa-circle-check");
+
 // const geoPhoneRegex = /^(\+?995)?(79\d{7}|5\d{8})$/;
 // const redberryMail = /@redberry.ge$/;
 localItems = [
@@ -11,6 +14,7 @@ localItems = [
   "dateOfBirth",
   "experience",
   "alreadyParticipated",
+  "avatar",
 ];
 checked.forEach((item, index) => {
   item.value = localStorage.getItem(localItems[index]);
@@ -22,6 +26,7 @@ checked.forEach((item) => {
   }
 });
 const formFunc = (elem) => {
+  console.log(elem);
   checked.forEach((item, index) => {
     if (item.value !== "") {
       activePage.style.backgroundColor = "#E9FAF1";
@@ -42,6 +47,18 @@ const formFunc = (elem) => {
     elem.parentNode.children[2].style.display = "block";
   } else {
     elem.parentNode.children[2].style.display = "none";
+  }
+};
+console.log(form.checkValidity() == true);
+window.onload = () => {
+  if (form.checkValidity() == true) {
+    icon.forEach((item) => {
+      item.style.display = "block";
+    });
+  } else {
+    icon.forEach((item) => {
+      item.style.display = "none";
+    });
   }
 };
 
@@ -69,7 +86,6 @@ const stylingWrongValidation = () => {
 };
 // Validate Form
 const validateForm = (elem) => {
-  const form = document.getElementById("myForm");
   const checkForm = form.checkValidity();
   const url = "./experience.html";
 

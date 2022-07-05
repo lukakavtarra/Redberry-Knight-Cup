@@ -243,7 +243,12 @@ i.fa-solid.fa-circle-check {
   font-size: 20px;
   display: none;
 }
-
+form:valid + i.fa-solid.fa-circle-check {
+  display: block !important;
+  background-color: red;
+  color: red;
+  font-size: 1909px;
+}
 /* experience page */
 .experience-header {
   position: absolute;
@@ -293,7 +298,7 @@ select {
 
 /* arrows */
 
-select.experience {
+.experience {
   background-image: linear-gradient(45deg, transparent 50%, black 50%),
     linear-gradient(135deg, black 50%, transparent 50%);
   background-position: calc(100% - 20px) calc(1em + 2px),
@@ -302,7 +307,7 @@ select.experience {
   background-repeat: no-repeat;
 }
 
-select.experience:active {
+.experience:active {
   background-image: linear-gradient(45deg, black 50%, transparent 50%),
     linear-gradient(135deg, transparent 50%, black 50%);
   background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em, 100% 0;
@@ -336,13 +341,21 @@ select.experience:active {
   margin: 57px 50px 37px 50px;
 }
 /* grandmasters character */
+#grandmaster {
+  cursor: pointer;
+}
 #characters {
   position: absolute;
   right: 109px;
   background-color: white;
 }
 .chessGrands {
-  display: none;
+  display: flex;
+  background-image: url(https://chess-tournament-api.devtest.ge//images/nona.jpg);
+  background-repeat: no-repeat;
+  background-size: 103px 103px;
+  background-position-x: 290px;
+  background-position-y: center;
   align-items: center;
   justify-content: space-between;
   font-size: 20px;
@@ -350,13 +363,14 @@ select.experience:active {
   font-weight: 300;
   width: 400px;
   margin: 7px;
-  padding: 13px;
+  padding: 43px;
 }
-.show {
+/* .show {
   display: flex;
-}
+} */
 .chessGrands:hover {
-  background-color: rgba(34, 34, 181, 0.871);
+  cursor: pointer;
+  background-color: rgba(67, 67, 129, 0.763);
 }
 img.grandmasters-img {
   width: 100px;

@@ -1,46 +1,59 @@
 let grandmasters;
+let bool;
 const divMaster = document.getElementById("masters");
 const experienceLevel = document.getElementById("levelOfExperience");
-let bool;
+const selectMaster = document.getElementById("characters");
+const selector = document.getElementById("grandmaster");
 experienceLevel.value = localStorage.getItem("experience");
+
 checkParticipation = localStorage.getItem("alreadyParticipated");
 bool = localStorage.getItem("alreadyParticipated") === "true";
-
 if (bool) {
   document.getElementById("yes").checked = checkParticipation;
-  console.log(checkParticipation);
 } else if (!bool && bool !== undefined) {
   document.getElementById("no").checked = checkParticipation;
 }
 //get API
 function getGrandmasters() {
-  const selectMaster = document.getElementById("characters");
-
   grandmasters.forEach((item, index) => {
     const grandmastersList = document.createElement("div");
-    const grandPictures = document.createElement("img");
     grandmastersList.className = "chessGrands";
-    grandmastersList.id = index;
+    grandmastersList.id = index + 1;
     grandmastersList.addEventListener("click", getValue);
     grandPicturesURL = `https://chess-tournament-api.devtest.ge/${item.image}`;
-    grandPictures.src = `${grandPicturesURL}`;
-    grandPictures.className = "grandmasters-img";
-    // divMaster.append(testPictures);
-    grandmastersList.innerHTML = item.name;
-    grandmastersList.append(grandPictures);
+    grandmastersList.innerText = item.name;
+    grandmastersList.style.backgroundImage = `url(${grandPicturesURL})`;
 
     selectMaster.appendChild(grandmastersList);
   });
 }
 const getValue = (elem) => {
-  ///////////ააააააააააააააააააააააააქქქქქქქქქქქქქქქქქქ//////////////
-  //id გამოვიტანოთ და დავამახსოვრებინოთ id value სთვის api ში გადასაგზავნად
-  console.log(elem.path[0].id);
+  if (selectMaster.innerHTML == null) {
+    getGrandmasters();
+  } else if (selectMaster.innerHTML !== null) {
+    const selectedMasters = document.getElementById(`${elem.path[0].id}`).id;
+    localStorage.setItem("avatar", parseInt(selectedMasters));
+    const choosed = elem.path[0].innerHTML;
+    selector.innerHTML = choosed;
+    selectMaster.innerHTML = null;
+  }
 };
+const clickBody = (elem) => {
+  if (selectMaster.innerHTML !== null && elem.path[0].id !== "grandmaster") {
+    selectMaster.innerHTML = null;
+  }
+};
+
 const showGrands = () => {
   const show = document.querySelectorAll(".chessGrands");
-  show.forEach((item) => item.classList.toggle("show"));
+  document.body.addEventListener("click", clickBody);
+  if (show.length == 0) {
+    getGrandmasters();
+  } else {
+    selectMaster.innerHTML = null;
+  }
 };
+
 window.onload = async () => {
   bool = document.getElementById("yes").checked === "true";
   const response = await fetch(
@@ -54,7 +67,6 @@ window.onload = async () => {
     }
   );
   grandmasters = await response.json();
-  getGrandmasters();
 };
 
 //post API
@@ -66,7 +78,7 @@ const postApi = async () => {
     date_of_birth: localStorage.dateOfBirth,
     experience_level: localStorage.experience,
     already_participated: bool,
-    character_id: 2,
+    character_id: localStorage.avatar,
   };
   const response = await fetch(
     "https://chess-tournament-api.devtest.ge/api/register",
