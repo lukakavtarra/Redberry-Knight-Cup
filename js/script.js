@@ -81,17 +81,6 @@ const validateForm = (elem) => {
     stylingWrongValidation();
   }
 };
-// Done submiting
-const doneSubmit = (elem) => {
-  if (
-    localStorage.experience == undefined ||
-    localStorage.avatar == undefined ||
-    localStorage.alreadyParticipated == undefined
-  ) {
-    alert("Please fill all forms");
-  } else {
-    elem.children[0].href = "../thank-u-page.html";
-  }
-};
+
 
 /////////

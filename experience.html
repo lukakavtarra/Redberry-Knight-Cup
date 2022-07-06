@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redberry Knight Cup</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="icon" href="https://redberry.international/wp-content/uploads/2021/05/cropped-favicon-32x32.png">
+
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
     <!-- fa icons -->
@@ -51,9 +53,11 @@
           <p>Start Creating Your Account</p>
         </div>
         <div class="pages">
-          <span class="active">1 </span>
+          <span id="experiencePages" class="unactive">
+            <i class="fa-solid fa-check"></i>
+            <i class="fa-solid fa-check"></i> </span>
           <hr />
-          <span class="unactive">2</span>
+          <span id="experienceActive" class="active">2</span>
         </div>
         <div class="pages-info">
           <p class="personal-information">Personal Information</p>
@@ -101,7 +105,7 @@
           <div id="alreadyParticipate" class="participated">
             <input
               title="yes"
-              onclick="test()"
+              onclick="radioButton()"
               type="radio"
               id="yes"
               name="partipicipated"
@@ -110,7 +114,7 @@
             <label for="html">Yes</label>
             <input
               title="no"
-              onclick="test()"
+              onclick="radioButton()"
               type="radio"
               id="no"
               name="partipicipated"
@@ -127,7 +131,6 @@
         </form>
       </div>
     </main>
-    <script src="./js/getApi.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="./js/experienceScript.js"></script>
   </body>
 </html>

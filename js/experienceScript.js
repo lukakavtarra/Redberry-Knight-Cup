@@ -66,14 +66,19 @@ window.onload = async () => {
     selectAvatar.innerHTML =
       "Choose your character <span style='color:red'>*</span>";
   }
+  if (
+    localStorage.experience == undefined ||
+    localStorage.avatar == undefined ||
+    localStorage.alreadyParticipated == undefined
+  ) {
+    document.getElementById("experienceActive").style.backgroundColor = "#E9FAF1"
+  }
   // make select div for grandmasters
   selectAvatar.className = "experience";
   selectAvatar.id = "grandmaster";
   avataSelectionDiv.appendChild(selectAvatar);
-
   selectAvatar.addEventListener("click", showGrands);
 
-  //
   bool = document.getElementById("yes").checked === "true";
   const response = await fetch(
     "https://chess-tournament-api.devtest.ge/api/grandmasters",
@@ -92,9 +97,22 @@ window.onload = async () => {
 const formFuncSelect = (elem) => {
   localStorage.setItem("experience", elem.value);
 };
-const test = () => {
+const radioButton = () => {
   localStorage.setItem(
     "alreadyParticipated",
     document.getElementById("yes").checked
   );
+};
+
+// Done submiting
+const doneSubmit = (elem) => {
+  if (
+    localStorage.experience == undefined ||
+    localStorage.avatar == undefined ||
+    localStorage.alreadyParticipated == undefined
+  ) {
+    alert("Please fill all forms");
+  } else {
+    elem.children[0].href = "../thank-u-page.html";
+  }
 };

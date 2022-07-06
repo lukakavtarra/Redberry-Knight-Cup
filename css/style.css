@@ -113,6 +113,13 @@ main:after {
   display: flex;
   margin-top: 4px;
 }
+span#experiencePages {
+  background-color: #E9FAF1;
+}
+span#experiencePages i {
+  color: #3BAF77;
+  margin: -6px;
+}
 /* unactive page */
 
 .unactive {
