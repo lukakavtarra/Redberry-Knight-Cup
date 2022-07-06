@@ -162,7 +162,7 @@ main:after {
   font-family: var(--open-sans);
   font-weight: 400;
 }
-.input-placeholder input:focus + .placeholder {
+input:focus + .placeholder {
   display: none;
 }
 
@@ -249,6 +249,7 @@ form:valid + i.fa-solid.fa-circle-check {
   color: red;
   font-size: 1909px;
 }
+
 /* experience page */
 .experience-header {
   position: absolute;
@@ -346,7 +347,9 @@ select {
 }
 #characters {
   position: absolute;
-  right: 109px;
+  right: 98px;
+  top: 529px;
+  padding: 15px;
   background-color: white;
 }
 .chessGrands {
@@ -363,7 +366,7 @@ select {
   font-weight: 300;
   width: 400px;
   margin: 7px;
-  padding: 43px;
+  padding: 43px 10px;
 }
 /* .show {
   display: flex;
@@ -376,4 +379,18 @@ img.grandmasters-img {
   width: 100px;
   height: 72px;
   object-fit: cover;
+}
+
+/* last thank u page */
+#thanks-for-participate {
+  display: grid;
+  position: relative;
+  top: 339px;
+  left: -1px;
+  justify-items: center;
+}
+#thanks-for-participate p {
+  font-size: 36px;
+  font-family: var(--nunito);
+  font-weight: 800;
 }

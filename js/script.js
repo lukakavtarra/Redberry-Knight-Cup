@@ -26,7 +26,8 @@ checked.forEach((item) => {
   }
 });
 const formFunc = (elem) => {
-  console.log(elem);
+  const placeHolder = elem.parentNode.children[1];
+  const input = elem.parentNode.children[0];
   checked.forEach((item, index) => {
     if (item.value !== "") {
       activePage.style.backgroundColor = "#E9FAF1";
@@ -36,30 +37,15 @@ const formFunc = (elem) => {
       localStorage.removeItem(localItems[index]);
     }
   });
-  const placeHolder = elem.parentNode.children[1];
+
   //placeholder
   if (elem.value == "") {
     placeHolder.style.display = "block";
   } else {
     placeHolder.style.display = "none";
   }
-  if (elem.checkValidity() == true) {
-    elem.parentNode.children[2].style.display = "block";
-  } else {
-    elem.parentNode.children[2].style.display = "none";
-  }
-};
-console.log(form.checkValidity() == true);
-window.onload = () => {
-  if (form.checkValidity() == true) {
-    icon.forEach((item) => {
-      item.style.display = "block";
-    });
-  } else {
-    icon.forEach((item) => {
-      item.style.display = "none";
-    });
-  }
+  //placeholder 2.0
+  elem.parentNode.children[2].style.display = "none";
 };
 
 // hide placeholder on date type input
@@ -93,6 +79,18 @@ const validateForm = (elem) => {
     elem.children[0].href = url;
   } else {
     stylingWrongValidation();
+  }
+};
+// Done submiting
+const doneSubmit = (elem) => {
+  if (
+    localStorage.experience == undefined ||
+    localStorage.avatar == undefined ||
+    localStorage.alreadyParticipated == undefined
+  ) {
+    alert("Please fill all forms");
+  } else {
+    elem.children[0].href = "../thank-u-page.html";
   }
 };
 

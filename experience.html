@@ -75,8 +75,8 @@
                 class="experience"
                 id="levelOfExperience"
               >
-                <option value="zero" selected disabled selected>
-                  level of knowledge
+                <option value="zero" disabled selected>
+                  level of knowledge <span style="color: red">*</span>
                 </option>
                 <option
                   data-class="avatar"
@@ -89,10 +89,7 @@
                 <option value="professional">Professional</option>
               </select>
             </div>
-            <div class="">
-              <div onclick="showGrands()" class="experience" id="grandmaster">
-                Choose your character <span style="color: red">*</span>
-              </div>
+            <div id="chooseAvatar">
               <div id="characters"></div>
             </div>
           </div>
@@ -123,14 +120,12 @@
           </div>
           <div class="page-next-back">
             <a class="back" href="./personal-information.html">back</a>
-            <button id="validateButton" onclick="validateForm(this)">
-              <a>Next <i class="fa-regular fa-circle-right"></i></a>
+            <button id="validateButton" onclick="doneSubmit(this)">
+              <a>Done</a>
             </button>
           </div>
         </form>
       </div>
-
-      <button onClick="mySubmit()">submit</button>
     </main>
     <script src="./js/getApi.js"></script>
     <script src="./js/script.js"></script>

@@ -1,10 +1,11 @@
 let grandmasters;
-let bool;
+
 const divMaster = document.getElementById("masters");
 const experienceLevel = document.getElementById("levelOfExperience");
 const selectMaster = document.getElementById("characters");
 const selector = document.getElementById("grandmaster");
-experienceLevel.value = localStorage.getItem("experience");
+const avataSelectionDiv = document.getElementById("chooseAvatar");
+const selectAvatar = document.createElement("div");
 
 checkParticipation = localStorage.getItem("alreadyParticipated");
 bool = localStorage.getItem("alreadyParticipated") === "true";
@@ -18,7 +19,7 @@ function getGrandmasters() {
   grandmasters.forEach((item, index) => {
     const grandmastersList = document.createElement("div");
     grandmastersList.className = "chessGrands";
-    grandmastersList.id = index + 1;
+    grandmastersList.id = item.id;
     grandmastersList.addEventListener("click", getValue);
     grandPicturesURL = `https://chess-tournament-api.devtest.ge/${item.image}`;
     grandmastersList.innerText = item.name;
@@ -34,7 +35,8 @@ const getValue = (elem) => {
     const selectedMasters = document.getElementById(`${elem.path[0].id}`).id;
     localStorage.setItem("avatar", parseInt(selectedMasters));
     const choosed = elem.path[0].innerHTML;
-    selector.innerHTML = choosed;
+    selectAvatar.innerHTML = choosed;
+    localStorage.setItem("chosedAvatar", choosed);
     selectMaster.innerHTML = null;
   }
 };
@@ -55,6 +57,23 @@ const showGrands = () => {
 };
 
 window.onload = async () => {
+  if (localStorage.experience !== undefined) {
+    experienceLevel.value = localStorage.getItem("experience");
+  }
+  if (localStorage.chosedAvatar !== undefined) {
+    selectAvatar.innerHTML = `${localStorage.chosedAvatar}`;
+  } else {
+    selectAvatar.innerHTML =
+      "Choose your character <span style='color:red'>*</span>";
+  }
+  // make select div for grandmasters
+  selectAvatar.className = "experience";
+  selectAvatar.id = "grandmaster";
+  avataSelectionDiv.appendChild(selectAvatar);
+
+  selectAvatar.addEventListener("click", showGrands);
+
+  //
   bool = document.getElementById("yes").checked === "true";
   const response = await fetch(
     "https://chess-tournament-api.devtest.ge/api/grandmasters",
@@ -67,35 +86,6 @@ window.onload = async () => {
     }
   );
   grandmasters = await response.json();
-};
-
-//post API
-const postApi = async () => {
-  const data = {
-    name: localStorage.name,
-    email: localStorage.email,
-    phone: localStorage.phone,
-    date_of_birth: localStorage.dateOfBirth,
-    experience_level: localStorage.experience,
-    already_participated: bool,
-    character_id: localStorage.avatar,
-  };
-  const response = await fetch(
-    "https://chess-tournament-api.devtest.ge/api/register",
-    {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  ).then((res) => {
-    console.log("request Complete Response:", res);
-  });
-};
-const mySubmit = () => {
-  postApi();
 };
 
 // select
