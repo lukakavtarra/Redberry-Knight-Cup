@@ -8,36 +8,43 @@ const avataSelectionDiv = document.getElementById("chooseAvatar");
 const selectAvatar = document.createElement("div");
 
 checkParticipation = localStorage.getItem("alreadyParticipated");
-bool = localStorage.getItem("alreadyParticipated") === "true";
-if (bool) {
+let alreadyParticipated = localStorage.getItem("alreadyParticipated") === "true";
+if (alreadyParticipated) {
   document.getElementById("yes").checked = checkParticipation;
-} else if (!bool && bool !== undefined) {
+} else{
   document.getElementById("no").checked = checkParticipation;
 }
 //get API
 function getGrandmasters() {
   grandmasters.forEach((item, index) => {
     const grandmastersList = document.createElement("div");
+
     grandmastersList.className = "chessGrands";
     grandmastersList.id = item.id;
     grandmastersList.addEventListener("click", getValue);
-    grandPicturesURL = `https://chess-tournament-api.devtest.ge/${item.image}`;
     grandmastersList.innerText = item.name;
+
+    grandPicturesURL = `https://chess-tournament-api.devtest.ge/${item.image}`;
     grandmastersList.style.backgroundImage = `url(${grandPicturesURL})`;
+    
 
     selectMaster.appendChild(grandmastersList);
   });
 }
 const getValue = (elem) => {
   if (selectMaster.innerHTML == null) {
+
     getGrandmasters();
-  } else if (selectMaster.innerHTML !== null) {
+
+  } else{
     const selectedMasters = document.getElementById(`${elem.path[0].id}`).id;
-    localStorage.setItem("avatar", parseInt(selectedMasters));
-    const choosed = elem.path[0].innerHTML;
-    selectAvatar.innerHTML = choosed;
-    localStorage.setItem("chosedAvatar", choosed);
+    const chosen = elem.path[0].innerHTML;
+
+    selectAvatar.innerHTML = chosen;
     selectMaster.innerHTML = null;
+
+    localStorage.setItem("avatar", parseInt(selectedMasters));
+    localStorage.setItem("chosedAvatar", chosen);
   }
 };
 const clickBody = (elem) => {
@@ -67,36 +74,32 @@ window.onload = async () => {
       "Choose your character <span style='color:red'>*</span>";
   }
   if (
-    localStorage.experience == undefined ||
-    localStorage.avatar == undefined ||
-    localStorage.alreadyParticipated == undefined
+    !localStorage.experience ||
+    !localStorage.avatar||
+    !localStorage.alreadyParticipated
   ) {
     document.getElementById("experienceActive").style.backgroundColor = "#E9FAF1"
   }
   // make select div for grandmasters
   selectAvatar.className = "experience";
   selectAvatar.id = "grandmaster";
-  avataSelectionDiv.appendChild(selectAvatar);
   selectAvatar.addEventListener("click", showGrands);
+  
+  avataSelectionDiv.appendChild(selectAvatar);
 
-  bool = document.getElementById("yes").checked === "true";
-  const response = await fetch(
-    "https://chess-tournament-api.devtest.ge/api/grandmasters",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-        "Access-Control-Allow-Origin": "*",
-      },
-    }
-  );
+  try {
+    const response =  await fetch(
+      "https://chess-tournament-api.devtest.ge/api/grandmasters",
+    ) 
   grandmasters = await response.json();
-};
+  
+} catch(error) {
+  console.log(error)
+}
+}
 
 // select
-const formFuncSelect = (elem) => {
-  localStorage.setItem("experience", elem.value);
-};
+const formFuncSelect = elem =>  localStorage.setItem("experience", elem.value);
 const radioButton = () => {
   localStorage.setItem(
     "alreadyParticipated",
@@ -107,12 +110,12 @@ const radioButton = () => {
 // Done submiting
 const doneSubmit = (elem) => {
   if (
-    localStorage.experience == undefined ||
-    localStorage.avatar == undefined ||
-    localStorage.alreadyParticipated == undefined
+    !localStorage.experience ||
+    !localStorage.avatar ||
+    !localStorage.alreadyParticipated
   ) {
     alert("Please fill all forms");
   } else {
-    elem.children[0].href = "../thank-u-page.html";
+    elem.children[0].href = "thank-u-page.html";
   }
 };

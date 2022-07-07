@@ -7,7 +7,7 @@ const icon = document.querySelectorAll(".fa-circle-check");
 
 // const geoPhoneRegex = /^(\+?995)?(79\d{7}|5\d{8})$/;
 // const redberryMail = /@redberry.ge$/;
-localItems = [
+const localItems = [
   "name",
   "email",
   "phone",
@@ -21,13 +21,12 @@ checked.forEach((item, index) => {
 });
 
 checked.forEach((item) => {
-  if (item.value !== "") {
+  if (item.value) {
     item.parentNode.children[1].style.display = "none";
   }
 });
 const formFunc = (elem) => {
   const placeHolder = elem.parentNode.children[1];
-  const input = elem.parentNode.children[0];
   checked.forEach((item, index) => {
     if (item.value !== "") {
       activePage.style.backgroundColor = "#E9FAF1";
@@ -39,7 +38,7 @@ const formFunc = (elem) => {
   });
 
   //placeholder
-  if (elem.value == "") {
+  if (!elem.value) {
     placeHolder.style.display = "block";
   } else {
     placeHolder.style.display = "none";
@@ -52,6 +51,7 @@ const formFunc = (elem) => {
 const makeDateFormat = (elem) => {
   elem.type = "date";
   elem.parentNode.children[1].style.display = "none";
+  console.log(elem.parentNode.children)
 };
 //styling wrong validated forms
 const stylingWrongValidation = () => {
@@ -75,7 +75,7 @@ const validateForm = (elem) => {
   const checkForm = form.checkValidity();
   const url = "./experience.html";
 
-  if (checkForm == true) {
+  if (checkForm) {
     elem.children[0].href = url;
   } else {
     stylingWrongValidation();

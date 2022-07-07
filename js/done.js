@@ -9,12 +9,11 @@ const postApi = async () => {
     already_participated: Boolean(localStorage.alreadyParticipated),
     character_id: localStorage.avatar,
   };
-  const response = await fetch(
+  await fetch(
     "https://chess-tournament-api.devtest.ge/api/register",
     {
       method: "POST",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
@@ -24,10 +23,10 @@ const postApi = async () => {
   });
 };
 
-window.onload = () => {
-  postApi();
-};
-setTimeout(function () {
+window.onload = () => postApi();
+
+
+setTimeout( () => {
   localStorage.clear();
-  window.location.href = "../index.html";
+  window.location.href = "index.html";
 }, 3000);

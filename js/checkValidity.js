@@ -1,5 +1,5 @@
 window.onload = () => {
-  if (form.checkValidity() == true) {
+  if (form.checkValidity()) {
     icon.forEach((item) => {
       item.style.display = "block";
     });
