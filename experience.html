@@ -10,6 +10,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/experience.css">
     <!-- fa icons -->
     <script
       src="https://kit.fontawesome.com/6ba073b965.js"
@@ -27,7 +28,7 @@
     <main>
       <!-- LEFT -->
       <div class="chess-picture column">
-        <header id="purpleline">
+        <header class="purpleline">
           <p>
             <img src="./images/landing-page/Vector.png" alt="Knight" />Redberry
             Knight Cup
@@ -65,7 +66,7 @@
         </div>
         <div class="personal-info-page">
           <h2>Chess experience</h2>
-          <p id="basic-info-text">This Is Basic Information Fields</p>
+          <p class="basic-info-text">This Is Basic Information Fields</p>
         </div>
         <!-- form -->
         <form name="myForm">
@@ -97,7 +98,7 @@
               <div id="characters"></div>
             </div>
           </div>
-          <p id="chempionshit-participate">
+          <p id="chempionship-participate">
             Have you participated in the Redberry Championship?
             <span style="color: red">*</span>
           </p>
@@ -111,7 +112,7 @@
               name="partipicipated"
               value="true"
             />
-            <label for="html">Yes</label>
+            <label for="yes">Yes</label>
             <input
               title="no"
               onclick="radioButton()"
@@ -120,11 +121,11 @@
               name="partipicipated"
               value="false"
             />
-            <label for="css">No</label>
+            <label for="no">No</label>
           </div>
           <div class="page-next-back">
             <a class="back" href="./personal-information.html">back</a>
-            <button id="validateButton" onclick="doneSubmit(this)">
+            <button class="validateButton" onclick="doneSubmit(this)">
               <a>Done</a>
             </button>
           </div>

@@ -26,7 +26,7 @@
     <main>
       <!-- LEFT -->
       <div class="chess-picture column">
-        <header id="purpleline">
+        <header class="purpleline">
           <p>
             <img src="./images/landing-page/Vector.png" alt="Knight" />Redberry
             Knight Cup
@@ -54,8 +54,13 @@
         </div>
         <div class="personal-info-page">
           <h2>Personal information</h2>
-          <p id="basic-info-text">This Is Basic Information Fields</p>
+          <p class="basic-info-text">This Is Basic Information Fields</p>
         </div>
+        <!-- error box test -->
+        <!-- <div class="error-box">
+          <p class="error-alert"><span>!</span> Invalid email</p>
+          <p class="error-message">Please enter valid email address</p>
+        </div> -->
         <!-- form -->
         <form name="myForm" id="myForm">
           <div class="input-placeholder">
@@ -71,7 +76,7 @@
           </div>
           <div class="input-placeholder">
             <input
-              title="email"
+              title="email address"
               oninvalid="this.setCustomValidity('Please enter valid email address')"
               oninput="this.setCustomValidity('')"
               pattern=".+@redberry\.ge"
@@ -84,9 +89,10 @@
           </div>
           <div class="input-placeholder">
             <input
-              title="tel"
+              title="phone number"
               oninvalid="this.setCustomValidity('Please enter valid phone number')"
               oninput="this.setCustomValidity('')"
+              onkeypress="return onlyNumberKey(event)"
               pattern="[5]{1}[0-9]{8}"
               type="tel"
               onkeyup="formFunc(this)"
@@ -98,9 +104,11 @@
           <div class="input-placeholder">
             <input
               placeholder=""
-              title="date"
+              title="date of birth"
               type="text"
               name="date"
+              min='1930-01-01' 
+              max="2022-01-01"
               onfocus="makeDateFormat(this)"
               onkeyup="formFunc(this)"
               onclick="console.log(this.value)"
@@ -111,13 +119,11 @@
           </div>
           <div class="page-next-back">
             <a class="back" href="./index.html">back</a>
-            <button id="validateButton" onclick="validateForm(this)">
-              <a>Next <i class="fa-regular fa-circle-right"></i></a>
-            </button>
+              <a class="validateButton" onclick="validateForm(this)">Next <i class="fa-regular fa-circle-right"></i></a>
           </div>
         </form>
       </div>
-      <script src="./js/script.js" type="text/javascript"></script>
+      <script src="./js/personal-information.js" type="text/javascript"></script>
       <script src="./js/checkValidity.js"></script>
     </main>
   </body>

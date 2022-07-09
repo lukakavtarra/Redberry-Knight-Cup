@@ -49,16 +49,23 @@ main:after {
   font-family: var(--nunito);
   margin-bottom: 102px;
 }
-#purpleline {
+
+#landing-header span {
+    position: relative;
+    bottom: 13px;
+}
+
+
+.purpleline {
   background-color: #7025fb;
 }
-#purpleline p {
+.purpleline p {
   color: white;
   font-weight: 900;
   font-size: 25px;
   padding: 26px 72px;
 }
-#purpleline p img {
+.purpleline p img {
   margin: 0 10px;
 }
 
@@ -113,13 +120,7 @@ main:after {
   display: flex;
   margin-top: 4px;
 }
-span#experiencePages {
-  background-color: #E9FAF1;
-}
-span#experiencePages i {
-  color: #3BAF77;
-  margin: -6px;
-}
+
 /* unactive page */
 
 .unactive {
@@ -147,16 +148,11 @@ span#experiencePages i {
   font-family: var(--open-sans);
   font-weight: 600;
 }
-#basic-info-text {
+.basic-info-text {
   font-family: var(--open-sans);
   font-weight: 600;
   color: #95939a;
 }
-/* input ::after{
-  content: "*";
-  background-color: black;
-  color: red;
-} */
 
 /* input styling */
 
@@ -205,8 +201,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
 }
+
+input[type='date']:invalid +.placeholder, 
+input[type='date']:valid + .placeholder{ 
+  display: none !important; 
+}
+
+input:hover {
+  background-color: #E9ECEF;
+  opacity: 0.9;
+}
 input:hover + .placeholder {
   opacity: 0.8;
+}
+input:focus,
+input:focus + input:hover {
+  background-color: #E9ECEF !important;
+
 }
 /* Back and Next buttons */
 .page-next-back {
@@ -219,7 +230,7 @@ input:hover + .placeholder {
   color: black;
 }
 .back,
-#validateButton a {
+.validateButton {
   border: 0.1px solid black !important;
   text-decoration: none;
   padding: 6px 15px;
@@ -227,17 +238,21 @@ input:hover + .placeholder {
   font-size: 20px;
   font-family: var(--open-sans);
   font-weight: 400;
+  display: flex;
+  align-items: center;
 }
 
-#validateButton {
+.validateButton {
   border: none;
   background-color: black;
   color: white !important;
-  padding: 0;
+  padding: 13px;
   border-radius: 7px;
+  cursor: pointer;
 }
-#validateButton a i {
+.validateButton  i {
   padding: 0;
+  margin-left: 7px;
 }
 
 /* Right Validaiton */
@@ -250,12 +265,7 @@ i.fa-solid.fa-circle-check {
   font-size: 20px;
   display: none;
 }
-form:valid + i.fa-solid.fa-circle-check {
-  display: block !important;
-  background-color: red;
-  color: red;
-  font-size: 1909px;
-}
+
 
 /* experience page */
 .experience-header {
@@ -324,9 +334,7 @@ select {
   outline: 0;
 }
 
-#myFormChessMasters {
-  display: flex;
-}
+
 .participated {
   display: flex;
   justify-content: center;
@@ -342,23 +350,12 @@ select {
   padding: 0;
   width: 20px;
 }
-#chempionshit-participate {
-  font-size: 20px;
-  font-family: var(--open-sans);
-  font-weight: 400;
-  margin: 57px 50px 37px 50px;
-}
+
 /* grandmasters character */
 #grandmaster {
   cursor: pointer;
 }
-#characters {
-  position: absolute;
-  right: 98px;
-  top: 529px;
-  padding: 15px;
-  background-color: white;
-}
+
 .chessGrands {
   display: flex;
   background-image: url(https://chess-tournament-api.devtest.ge//images/nona.jpg);
@@ -400,4 +397,40 @@ img.grandmasters-img {
   font-size: 36px;
   font-family: var(--nunito);
   font-weight: 800;
+}
+
+/* styling error popup */
+.error-box {
+  font-size: 16px;
+  /* border: solid; */
+  display: grid;
+  justify-items: stretch;
+  box-shadow: 1px 1px 54px -11px grey;
+  width: 340px;
+  position: absolute;
+  z-index: 1;
+  top: 226px;
+  right: 39px;
+  border-radius: 7px;
+  font-family: var(--open-sans);
+}
+
+.error-box .error-alert {
+  border-bottom:0.1px solid #80808042;
+  color: #DC3545;
+  display: flex;
+  align-items: center;
+  padding: 9.5px 12px;
+}
+.error-box span {
+  border: solid;
+  padding: 5px 13px;
+  border-radius: 50%;
+  background-color: #DC3545;
+  color: white;
+  margin-right: 8px;
+}
+.error-box .error-message{
+  padding: 12px;
+  color: #212529;
 }

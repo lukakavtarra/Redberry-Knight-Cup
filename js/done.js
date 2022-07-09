@@ -23,10 +23,12 @@ const postApi = async () => {
   });
 };
 
-window.onload = () => postApi();
-
-
-setTimeout( () => {
+window.onload = () => {
+  postApi()
   localStorage.clear();
-  window.location.href = "index.html";
-}, 3000);
+};
+
+
+// setTimeout( () => {
+//   window.location.href = "index.html";
+// }, 3000);
