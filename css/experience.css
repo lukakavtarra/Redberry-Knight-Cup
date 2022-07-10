@@ -25,3 +25,29 @@ span#experiencePages i {
     font-weight: 400;
     margin: 57px 50px 37px 50px;
 }
+#total {
+    position: absolute;
+    top: -6px;
+    left: 36px;
+    font-family: var(--open-sans);
+    color: #817D7D;
+    font-weight: 600;
+}
+#selectable-experience {
+    padding: 8px 10px 8px 16px;
+    font-size: 16px;
+    font-family: var(--open-sans);
+    margin: 95px 5px 0 48px;
+    background-color: white;
+    border: none;
+    border-bottom: 0.1px solid gray;
+    border-radius: 0;
+    width: 355px;
+}
+
+#list-experience {
+    position: absolute;
+    background-color: white;
+    left: 1008px;
+    bottom: 248px;
+}

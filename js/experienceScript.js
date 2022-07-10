@@ -7,6 +7,11 @@ const selector = document.getElementById("grandmaster");
 const avataSelectionDiv = document.getElementById("chooseAvatar");
 const selectAvatar = document.createElement("div");
 
+const form = document.getElementById("experienceForm");
+const wrongValidity = document.createElement('div')
+const errorAlert = document.createElement('p')    
+const errorMessage = document.createElement('p');
+
 checkParticipation = localStorage.getItem("alreadyParticipated");
 let alreadyParticipated = localStorage.getItem("alreadyParticipated") === "true";
 if (alreadyParticipated) {
@@ -114,7 +119,21 @@ const doneSubmit = (elem) => {
     !localStorage.avatar ||
     !localStorage.alreadyParticipated
   ) {
-    alert("Please fill all forms");
+    errorAlert.innerHTML = `<span>!</span> Something is missing`;
+    errorMessage.innerHTML = `Please fill all forms `
+    wrongValidity.remove();
+    wrongValidity.classList = "error-box";
+    form.appendChild(wrongValidity)
+
+    errorAlert.classList = "error-alert";
+    wrongValidity.append(errorAlert)
+
+    errorMessage.classList = "error-message"
+    wrongValidity.append(errorMessage)
+    setTimeout( () => {
+      wrongValidity.remove();
+    }, 5000)
+    // alert("Please fill all forms");
   } else {
     elem.children[0].href = "thank-u-page.html";
   }

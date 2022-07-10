@@ -98,16 +98,15 @@ const validateForm = (elem) => {
   if (checkForm) {
     elem.href = url;
   } else {
+    wrongValidity.remove();
+    wrongValidity.classList = "error-box";
+    form.appendChild(wrongValidity)
 
-wrongValidity.remove();
-wrongValidity.classList = "error-box";
-form.appendChild(wrongValidity)
+    errorAlert.classList = "error-alert";
+    wrongValidity.append(errorAlert)
 
-errorAlert.classList = "error-alert";
-wrongValidity.append(errorAlert)
-
-errorMessage.classList = "error-message"
-wrongValidity.append(errorMessage)
+    errorMessage.classList = "error-message"
+    wrongValidity.append(errorMessage)
     stylingWrongValidation();
   }
 };

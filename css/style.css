@@ -358,10 +358,9 @@ select {
 
 .chessGrands {
   display: flex;
-  background-image: url(https://chess-tournament-api.devtest.ge//images/nona.jpg);
   background-repeat: no-repeat;
-  background-size: 103px 103px;
-  background-position-x: 290px;
+  background-size: 93px 92px;
+  background-position-x: 302px;
   background-position-y: center;
   align-items: center;
   justify-content: space-between;
@@ -369,21 +368,15 @@ select {
   font-family: var(--open-sans);
   font-weight: 300;
   width: 400px;
-  margin: 7px;
-  padding: 43px 10px;
+  /* margin: 7px; */
+  padding: 37px 10px;
 }
-/* .show {
-  display: flex;
-} */
+
 .chessGrands:hover {
   cursor: pointer;
-  background-color: rgba(67, 67, 129, 0.763);
+  background-color: rgba(77, 77, 155, 0.763);
 }
-img.grandmasters-img {
-  width: 100px;
-  height: 72px;
-  object-fit: cover;
-}
+
 
 /* last thank u page */
 #thanks-for-participate {
