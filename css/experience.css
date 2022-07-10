@@ -51,3 +51,6 @@ span#experiencePages i {
     left: 1008px;
     bottom: 248px;
 }
+select:hover {
+    cursor: pointer;
+}

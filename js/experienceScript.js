@@ -135,6 +135,7 @@ const doneSubmit = (elem) => {
     }, 5000)
     // alert("Please fill all forms");
   } else {
-    elem.children[0].href = "thank-u-page.html";
+    console.log(elem)
+    elem.href = "thank-u-page.html";
   }
 };
