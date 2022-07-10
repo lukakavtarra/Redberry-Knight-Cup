@@ -5,10 +5,12 @@ const experienceLevel = document.getElementById("levelOfExperience");
 const selectMaster = document.getElementById("characters");
 const selector = document.getElementById("grandmaster");
 const avataSelectionDiv = document.getElementById("chooseAvatar");
-const selectAvatar = document.createElement("div");
-
 const form = document.getElementById("experienceForm");
+
+const selectAvatar = document.createElement("div");
 const wrongValidity = document.createElement('div')
+
+const grandmastersLength = document.createElement('p')
 const errorAlert = document.createElement('p')    
 const errorMessage = document.createElement('p');
 
@@ -21,6 +23,9 @@ if (alreadyParticipated) {
 }
 //get API
 function getGrandmasters() {
+grandmastersLength.innerHTML = `(Total ${grandmasters.length})`;
+grandmastersLength.id = "grandmasters-length"
+selectMaster.appendChild(grandmastersLength)
   grandmasters.forEach((item, index) => {
     const grandmastersList = document.createElement("div");
 
