@@ -54,3 +54,9 @@ span#experiencePages i {
 select:hover {
     cursor: pointer;
 }
+#grandmasters-length {
+    font-family: var(--open-sans);
+    font-weight: 600;
+    margin: 0 12px;
+    color: #817D7D;
+}
